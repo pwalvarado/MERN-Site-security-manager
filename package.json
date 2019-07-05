@@ -4,7 +4,8 @@
   "description": "System for the control of entry and exit of employees",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "author": "@pwalvarado",
   "license": "ISC",
