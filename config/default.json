@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://runa:runa123@runa-dptry.mongodb.net/test?retryWrites=true&w=majority"
+}
