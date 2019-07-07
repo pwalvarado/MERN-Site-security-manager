@@ -71,11 +71,11 @@ router.post(
 
       jwt.sign(payload, secret, { expiresIn: 36000 }, (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        return res.json({ token });
       });
     } catch (err) {
       console.log(err.message);
-      res.status(500).send("Server error");
+      return res.status(500).send("Server error");
     }
   }
 );
