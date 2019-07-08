@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../../middleware/auth");
-const Profile = require("../../models/profile");
-const User = require("../../models/user");
 const { validationResult, check } = require("express-validator");
+const User = require("../../models/user");
+const Profile = require("../../models/profile");
+const auth = require("../../middleware/auth");
 
 // @route         GET api/profile/me
 // @description   Get profile for current user
@@ -100,5 +100,19 @@ router.post(
     } catch (error) {}
   }
 );
+
+// @route         GET api/profile/
+// @description   Get profile list
+// @access        Public
+router.get("/", auth, async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    console.log(profiles);
+    return res.json(profiles);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("Server error");
+  }
+});
 
 module.exports = router;
