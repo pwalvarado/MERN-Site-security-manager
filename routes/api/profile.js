@@ -107,10 +107,33 @@ router.post(
 router.get("/", auth, async (req, res) => {
   try {
     const profiles = await Profile.find().populate("user", ["name", "avatar"]);
-    console.log(profiles);
     return res.json(profiles);
   } catch (err) {
     console.log(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+// @route         GET api/profile/user/:user_id
+// @description   Get profile by user ID
+// @access        Public
+router.get("/user/:user_id", auth, async (req, res) => {
+  try {
+    // console.log("REQ", req.params);
+    const profile = await Profile.findOne({
+      user: req.params.user_id
+    }).populate("user", ["name", "avatar"]);
+    if (!profile) {
+      return res.status(400).json({ msg: "Profile not found" });
+    }
+    return res.json(profile);
+  } catch (err) {
+    console.log(err);
+
+    //passed user_id is not a valid ObjectID
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({ msg: "Profile not found" });
+    }
     res.status(500).send("Server error");
   }
 });
