@@ -97,7 +97,10 @@ router.post(
       profile = new Profile(profileFields);
       await profile.save();
       return res.json(profile);
-    } catch (error) {}
+    } catch (error) {
+      console.log(err.message);
+      res.status(500).send("Server error");
+    }
   }
 );
 
