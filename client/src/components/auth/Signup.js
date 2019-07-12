@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
 
-const Signup = () => {
+const Signup = props => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,7 +19,7 @@ const Signup = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords don't match");
+      props.setAlert("Passwords don't match", "danger");
     } else {
       console.log(formData);
     }
@@ -85,4 +87,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default connect(
+  null,
+  { setAlert }
+)(Signup);
