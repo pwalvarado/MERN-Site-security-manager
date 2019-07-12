@@ -2,9 +2,10 @@ import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const Signup = props => {
+const Signup = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,9 +21,9 @@ const Signup = props => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      props.setAlert("Passwords don't match", "danger");
+      setAlert("Passwords don't match", "danger");
     } else {
-      console.log(formData);
+      register({ name, email, password });
     }
   };
 
@@ -40,7 +41,6 @@ const Signup = props => {
             name="name"
             value={name}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
@@ -50,7 +50,6 @@ const Signup = props => {
             name="email"
             value={email}
             onChange={e => onChange(e)}
-            required
           />
           <small className="form-text">
             This site uses Gravatar, so if you want a profile image, use a
@@ -61,22 +60,18 @@ const Signup = props => {
           <input
             type="password"
             placeholder="Password"
-            minlength="6"
             name="password"
             value={password}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <div className="form-group">
           <input
             type="password"
             placeholder="Confirm Password"
-            minlength="6"
             name="password2"
             value={password2}
             onChange={e => onChange(e)}
-            required
           />
         </div>
         <input type="submit" value="Register" className="btn btn-primary" />
@@ -89,10 +84,11 @@ const Signup = props => {
 };
 
 Signup.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { setAlert }
+  { setAlert, register }
 )(Signup);
