@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
+import CreateProfile from "./components/profile-form/CreateProfile";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
@@ -37,6 +38,11 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
             </Switch>
           </section>
         </Fragment>
