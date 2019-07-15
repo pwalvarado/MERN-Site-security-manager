@@ -4,6 +4,7 @@ import "./App.scss";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import CreateProfile from "./components/profile-form/CreateProfile";
+import EditProfile from "./components/profile-form/EditProfile";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
@@ -42,6 +43,11 @@ const App = () => {
                 exact
                 path="/create-profile"
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
               />
             </Switch>
           </section>
