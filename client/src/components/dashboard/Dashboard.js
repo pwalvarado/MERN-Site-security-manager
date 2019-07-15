@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
 import UserActions from "./UserActions";
+import UserAccesses from "../user/ViewAccesses";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -25,7 +26,8 @@ const Dashboard = ({
       </p>
       {profile !== null ? (
         <Fragment>
-          <UserActions  />
+          <UserActions />
+          <UserAccesses />
         </Fragment>
       ) : (
         <Fragment>
