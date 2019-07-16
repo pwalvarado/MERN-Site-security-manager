@@ -69,7 +69,6 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth,
   profile: state.profile
-  // role: state.user.role
 });
 
 export default connect(
