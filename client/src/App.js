@@ -10,6 +10,7 @@ import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import AccessReport from "./components/access/AccessReport";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 
@@ -48,6 +49,11 @@ const App = () => {
                 exact
                 path="/edit-profile"
                 component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/access-report"
+                component={AccessReport}
               />
             </Switch>
           </section>

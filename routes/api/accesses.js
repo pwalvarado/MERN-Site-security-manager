@@ -47,7 +47,7 @@ router.post(
 // @access        Public
 router.get("/", [auth], async (req, res) => {
   try {
-    const accesses = await Access.find();
+    const accesses = await Access.find().populate("user");
     return res.json(accesses);
   } catch (err) {
     console.log(err.message);

@@ -1,4 +1,8 @@
-import { GET_USER_ACCESSES, ACCESSES_ERROR } from "../actions/types";
+import {
+  GET_ACCESSES,
+  GET_USER_ACCESSES,
+  ACCESSES_ERROR
+} from "../actions/types";
 
 const initialState = {
   accesses: [],
@@ -11,6 +15,7 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case GET_USER_ACCESSES:
+    case GET_ACCESSES:
       return {
         ...state,
         accesses: payload,
