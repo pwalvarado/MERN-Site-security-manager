@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
-import UserActions from "./UserActions";
 import UserAccesses from "../user/ViewAccesses";
 import AccessLogger from "../access/AccessLogger";
 
@@ -23,29 +22,12 @@ const Dashboard = ({
     <Fragment>
       {user.role && user.role === "admin" ? (
         <Fragment>
-          <h1 className="large text-primary">Site control</h1>
-          <p className="lead">
-            <i className="fas fa-user" /> Welcome {user && user.name}
-          </p>
-        </Fragment>
-      ) : (
-        <Fragment>
-          <h1 className="large text-primary">Dashboard </h1>
-          <p className="lead">
-            <i className="fas fa-user" /> Welcome {user && user.name}
-          </p>
-        </Fragment>
-      )}
-
-      {user.role && user.role === "admin" ? (
-        <Fragment>
           <Link to="/access-report" className="btn btn-primary my-1">
             Access Report
           </Link>
         </Fragment>
       ) : profile !== null ? (
         <Fragment>
-          <UserActions />
           <UserAccesses />
         </Fragment>
       ) : (

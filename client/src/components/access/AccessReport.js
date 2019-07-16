@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import moment from "moment";
@@ -50,6 +51,9 @@ const AccessReport = ({ accesses, getAccesses }) => {
         </thead>
         <tbody>{accessesHTML}</tbody>
       </table>
+      <Link className="btn btn-light my-1" to="/dashboard">
+        Go Back
+      </Link>
     </Fragment>
   );
 };
