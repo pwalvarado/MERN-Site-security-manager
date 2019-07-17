@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getUsers } from "../../actions/user";
+import { createAccess } from "../../actions/access";
 
-const AccessLogger = ({ users, getUsers }) => {
+const AccessLogger = ({ users, getUsers, createAccess }) => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -13,14 +14,22 @@ const AccessLogger = ({ users, getUsers }) => {
     <tr key={row._id}>
       <td>
         {" "}
-        <img class="round-img" src={row.avatar} alt="" />
+        <img className="round-img" src={row.name} alt="" />
       </td>
       <td>{row.name}</td>
       <td>
-        <button type="button" class="btn btn-success btn-sm">
+        <button
+          type="button"
+          class="btn btn-success btn-sm"
+          onClick={() => createAccess({ accesstype: "in", user: row._id })}
+        >
           <i className="fas fa-sign-in-alt" />
         </button>
-        <button type="button" class="btn btn-danger btn-sm">
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          onClick={() => createAccess({ accesstype: "out", user: row._id })}
+        >
           <i className="fas fa-sign-out-alt" />
         </button>
       </td>
@@ -51,6 +60,7 @@ const AccessLogger = ({ users, getUsers }) => {
 
 AccessLogger.propTypes = {
   getUsers: PropTypes.func.isRequired,
+  createAccess: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired
 };
 
@@ -60,5 +70,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getUsers }
+  { getUsers, createAccess }
 )(AccessLogger);
