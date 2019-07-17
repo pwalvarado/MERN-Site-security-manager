@@ -26,6 +26,9 @@ npm install
 # Run both Express & React from root
 npm run dev
 
+# Run unit tests
+npm run test
+
 # Build for production
 cd client
 npm run build

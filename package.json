@@ -8,7 +8,7 @@
     "server": "nodemon index",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
-    "test": "tape test/**/*.js"
+    "test": "tape test/**/*.js | faucet"
   },
   "author": "@pwalvarado",
   "license": "ISC",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.1",
+    "faucet": "0.0.1",
     "nodemon": "^1.19.1",
     "parcel-bundler": "^1.12.3",
     "supertest": "^4.0.2",
