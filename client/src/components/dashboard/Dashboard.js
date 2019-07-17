@@ -20,8 +20,9 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      {user.role && user.role === "admin" ? (
+      {user && user.role === "admin" ? (
         <Fragment>
+          <AccessLogger />
           <Link to="/access-report" className="btn btn-primary my-1">
             Access Report
           </Link>
