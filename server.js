@@ -21,5 +21,4 @@ app.use("/api/profile", profileRouter);
 app.use("/api/accesses", accessesRouter);
 app.use("/api/users", usersRouter);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server starter on ${PORT}`));
+module.exports = app;
